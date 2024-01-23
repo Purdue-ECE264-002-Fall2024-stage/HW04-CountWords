@@ -6,7 +6,7 @@
 #include <stdlib.h> 
 #include <string.h> 
 #include <stdbool.h>
-#include "hw06.h"
+#include "hw05.h"
 #define LINELENGTH 80
 
 int main(int argc, char * * argv)
