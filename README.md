@@ -46,4 +46,4 @@ Submit the following files to gradescope as a zip file: 'main.c', 'filestr.c', '
 Test Inputs
 ===========
 
-The test inputs are [famous speeches](https://www.artofmanliness.com/articles/ooda-loop/).
+The test inputs are famous speeches
