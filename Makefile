@@ -6,15 +6,15 @@ WARNING = -Wall -Wshadow --pedantic
 ERROR = -Wvla -Werror
 GCC = gcc -std=c11 -g $(WARNING) $(ERROR) 
 
-TESTFALGS = -DTEST_COUNTWORD # -DDEBUG
+TESTFLAGS = -DTEST_TOTALCOUNTWORD -DTEST_EACHCOUNTWORD # -DDEBUG
 
 SRCS = main.c filestr.c
 OBJS = $(SRCS:%.c=%.o)
 
 # diff -w means do not care about space
 
-hw05: $(OBJS) 
-	$(GCC) $(TESTFALGS) $(OBJS) -o hw05
+hw04: $(OBJS) 
+	$(GCC) $(TESTFLAGS) $(OBJS) -o hw05
 
 .c.o: 
 	$(GCC) $(TESTFALGS) -c $*.c 
@@ -47,6 +47,6 @@ test6: hw05
 
 
 clean: # remove all machine generated files
-	rm -f hw05 *.o output*
+	rm -f hw04 *.o output*
 
 

@@ -6,29 +6,58 @@
 #include <stdbool.h>
 #include <string.h>
 
-int countWord(char * filename, char * word, char * line, int size)
-{
-  // filename: name of the input file
-  // word: the word to search
-  // line: temporary space to store what is read from the file
-  // size: size of line
-  // open a file whose name is filename for reading
-  // if fopen fails, return -1. 
-  // if fopen succeeds, set sum to zero
-  // use fgets to read the file
-  // if word appears in a line, add one to sum
-  //
-  
-  // It is possible that the same word appears multiple times in a line
-  // If this word is split in two or more lines, do not count the word.
-  //
-  // It is also possible that a long line is split by fgets. If this happens,
-  // do not count the word.
-  //
-  // return sum
-  //
-  // If a line is "aaaaa" and the word is "aa", how is the count defined?
-  // In this assignment, the first two letters are consumed when the
-  // the first match occurs. Thus, the next match starts at the third
-  // character. For this case, the correct answer is 2, not 4.
+// This function is provided to convert words to a form consisting of
+// only lowercase letters, provided for your convenience.  DO NOT modify it.
+void tidyString(char * messyString) {
+  const char * tidyString = malloc(sizeof(char)*(strlen(messyString) + 1));
+  if (!tidyString) return;
+  char * addToString = tidyString;
+  while (*messyString) {
+    if (*messyString > 96 && *messyString < 123) *(addToString++) = *messyString;
+    if (*messyString > 64 && *messyString < 91) *(addToString++) = *messyString + 32;
+    ++messyString;
+  }
+  *addToString = 0;
+  strcpy(messyString, tidyString);
+  free(tidyString);
 }
+
+// The functions below contain instructions for you.  You MUST modify them.
+# ifdef TOTALCOUNTWORD
+// Inputs:
+  // char * filename      The name of the input file
+  // int max_word_length  The longest any word is allowed to be
+int totalWordCount(char * filename, int max_word_length) {
+  // Open the file
+  // If the file cannot be found, return -1
+
+  // Dynamically allocate a string of length max_word_length
+  // Read words to that string, using fscanf, and count the words
+  // Close the file and free the string
+}
+#endif
+
+#ifdef EACHCOUNTWORD
+// Inputs:
+  // char * filename      The name of the input file
+  // int max_word_length  The longest any word is allowed to be
+  // int total_word_count The total number of words in the file
+void eachWordCount(char * filename, int max_word_length, int total_word_count)
+{
+  // Open the file
+  // If fopen fails, return
+
+  // Dynamically allocate space for your table of words, both words and ints to act as word counts
+
+  // Read in words from the file
+    // convert them to lowercase using the `tidyString`
+    // if the word does not appear in the table, add it and give it a count of 1
+    // if the word does appear in the table, increment its count
+
+  // Close the file
+  
+  // Print out words and their counts
+
+  // Free all dynamically allocated memory
+}
+#endif

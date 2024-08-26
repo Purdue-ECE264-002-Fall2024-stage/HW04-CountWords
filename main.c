@@ -6,26 +6,24 @@
 #include <stdlib.h> 
 #include <string.h> 
 #include <stdbool.h>
-#include "hw05.h"
-#define LINELENGTH 80
+#include "filestr.h"
+#define MAX_WORD_LENGTH 40
 
 int main(int argc, char * * argv)
 {
   // argv[1] is the input file name
   // argv[2] is the word to be counted
-  if (argc != 3)
+  if (argc != 2)
     {
       return EXIT_FAILURE;
     }
-  int sum = 0;
-  char * line = malloc(sizeof(* line) * LINELENGTH);
-  sum = countWord(argv[1], argv[2], line, LINELENGTH);
-  if (sum < 0)
+  int total = 0;
+  total = totalWordCount(argv[1], MAX_WORD_LENGTH);
+  if (total < 0)
     {
       return EXIT_FAILURE;
     }
-  printf("%d\n", sum);
-  free (line);
+  eachWordCount(argv[1], MAX_WORD_LENGTH, total);
   return EXIT_SUCCESS;
 }
 
