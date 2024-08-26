@@ -25,7 +25,6 @@ void tidyString(char * messyString) {
 }
 
 // The functions below contain instructions for you.  You MUST modify them.
-# ifdef TOTALCOUNTWORD
 // Inputs:
   // char * filename      The name of the input file
   // int max_word_length  The longest any word is allowed to be
@@ -39,9 +38,7 @@ int totalWordCount(char * filename, int max_word_length) {
   // Close the file and free the string
   // Return the word count
 }
-#endif
 
-#ifdef EACHCOUNTWORD
 // Inputs:
   // char * filename      The name of the input file
   // int max_word_length  The longest any word is allowed to be
@@ -67,4 +64,3 @@ void eachWordCount(char * filename, int max_word_length, int total_word_count)
 
   // Free all dynamically allocated memory
 }
-#endif
