@@ -52,8 +52,8 @@ void eachWordCount(char * filename, int max_word_length, int total_word_count)
   // If fopen fails, return
 
   // Dynamically allocate space for your table of words, both words and ints to act as word counts
-    // Hint:  you may want to use pointer arithmetic to navigate your table of words
-    // Hint:  you may need a variable to track how many rows of your "table" are real data
+    // Hint:  you can use pointer arithmetic or double pointers to navigate your table of words
+    // Hint:  you may want a variable to track how many rows of your table contain real data
 
   // Read in words from the file
     // convert them to lowercase using the `tidyString`
