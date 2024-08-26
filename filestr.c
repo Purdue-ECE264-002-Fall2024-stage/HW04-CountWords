@@ -4,12 +4,13 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
 
 // This function is provided to convert words to a form consisting of
 // only lowercase letters, provided for your convenience.  DO NOT modify it.
 void tidyString(char * messyString) {
-  const char * tidyString = malloc(sizeof(char)*(strlen(messyString) + 1));
+  char * tidyString = malloc(sizeof(char)*(strlen(messyString) + 1));
   if (!tidyString) return;
   char * addToString = tidyString;
   while (*messyString) {
@@ -58,7 +59,7 @@ void eachWordCount(char * filename, int max_word_length, int total_word_count)
   if (!fptr) return;
 
   // Dynamically allocate space for your table of words, both words and ints to act as word counts
-  const char * words = malloc(sizeof(char)*max_word_length*total_word_count);
+  char * words = malloc(sizeof(char)*max_word_length*total_word_count);
   int * word_counts = malloc(sizeof(int)*total_word_count);
   char * next_word = words;
   int * next_word_count = word_counts;
