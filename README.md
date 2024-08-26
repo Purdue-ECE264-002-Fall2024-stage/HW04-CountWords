@@ -1,6 +1,6 @@
 # Read Line from File and Count Word
 
-### Due 02/18 at 11:59pm
+### Due Sept. 17 at 11:59pm
 
 Learning Goals 
 ==============
