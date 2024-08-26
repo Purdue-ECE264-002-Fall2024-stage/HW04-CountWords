@@ -4,18 +4,20 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
 
 // This function is provided to convert words to a form consisting of
 // only lowercase letters, provided for your convenience.  DO NOT modify it.
 void tidyString(char * messyString) {
-  const char * tidyString = malloc(sizeof(char)*(strlen(messyString) + 1));
+  char * tidyString = malloc(sizeof(char)*(strlen(messyString) + 1));
   if (!tidyString) return;
   char * addToString = tidyString;
-  while (*messyString) {
-    if (*messyString > 96 && *messyString < 123) *(addToString++) = *messyString;
-    if (*messyString > 64 && *messyString < 91) *(addToString++) = *messyString + 32;
-    ++messyString;
+  char * takeFromString = messyString;
+  while (*takeFromString) {
+    if (*takeFromString > 96 && *takeFromString < 123) *(addToString++) = *takeFromString;
+    if (*takeFromString > 64 && *takeFromString < 91) *(addToString++) = *takeFromString + 32;
+    ++takeFromString;
   }
   *addToString = 0;
   strcpy(messyString, tidyString);
