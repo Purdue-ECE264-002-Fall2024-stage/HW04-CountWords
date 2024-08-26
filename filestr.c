@@ -49,11 +49,14 @@ void eachWordCount(char * filename, int max_word_length, int total_word_count)
   // If fopen fails, return
 
   // Dynamically allocate space for your table of words, both words and ints to act as word counts
+    // Hint:  you may want to use pointer arithmetic to navigate your table of words
+    // Hint:  you may need a variable to track how many rows of your "table" are real data
 
   // Read in words from the file
     // convert them to lowercase using the `tidyString`
     // if the word does not appear in the table, add it and give it a count of 1
     // if the word does appear in the table, increment its count
+      // Hint:  you can use "strcmp" to compare if two strings are identical
 
   // Close the file
   
