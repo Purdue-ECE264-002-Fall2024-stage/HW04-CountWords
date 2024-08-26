@@ -34,6 +34,7 @@ int totalWordCount(char * filename, int max_word_length) {
   // Dynamically allocate a string of length max_word_length
   // Read words to that string, using fscanf, and count the words
   // Close the file and free the string
+  // Return the word count
 }
 #endif
 
