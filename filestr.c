@@ -35,6 +35,7 @@ int totalWordCount(char * filename, int max_word_length) {
 
   // Dynamically allocate a string of length max_word_length
   // Read words to that string, using fscanf, and count the words
+    // Hint:  fscanf(file_ptr, "%39s", my_string) will retrieve everything up to the next whitespace (up to 39 characters), add a null terminator, and place it in "my_string"
   // Close the file and free the string
   // Return the word count
 }
