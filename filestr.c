@@ -37,15 +37,9 @@ int totalWordCount(char * filename, int max_word_length) {
   // Dynamically allocate a string of length max_word_length
   char * word = malloc(sizeof(char)*max_word_length);
   // Read words to that string, using fscanf, and count the words
-  int count = 0;
-  while (fscanf(fptr, "%40s", word) == 1) {
-    ++count;
-  }
-  
+    // Hint:  fscanf(file_ptr, "%39s", my_string) will retrieve everything up to the next whitespace (up to 39 characters), add a null terminator, and place it in "my_string"
   // Close the file and free the string
-  fclose(fptr);
-  free(word);
-  return count;
+  // Return the word count
 }
 
 // Inputs:
@@ -60,12 +54,8 @@ void eachWordCount(char * filename, int max_word_length, int total_word_count)
   if (!fptr) return;
 
   // Dynamically allocate space for your table of words, both words and ints to act as word counts
-  char * words = malloc(sizeof(char)*max_word_length*total_word_count);
-  int * word_counts = malloc(sizeof(int)*total_word_count);
-  char * next_word = words;
-  int * next_word_count = word_counts;
-
-  char * dict_word;
+    // Hint:  you may want to use pointer arithmetic to navigate your table of words
+    // Hint:  you may need a variable to track how many rows of your "table" are real data
 
   // Read in words from the file
   char * word = malloc(sizeof(char)*max_word_length);
@@ -84,10 +74,7 @@ void eachWordCount(char * filename, int max_word_length, int total_word_count)
       ++next_word_count;
     }
     // if the word does appear in the table, increment its count
-    else {
-      word_counts[(dict_word - words) / max_word_length] += 1;
-    }
-  }
+      // Hint:  you can use "strcmp" to compare if two strings are identical
 
   // Close the file
   fclose(fptr);
