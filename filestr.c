@@ -25,23 +25,23 @@ void tidyString(char * messyString) {
 }
 
 // The functions below contain instructions for you.  You MUST modify them.
+# ifdef TOTALCOUNTWORD
 // Inputs:
   // char * filename      The name of the input file
   // int max_word_length  The longest any word is allowed to be
 int totalWordCount(char * filename, int max_word_length) {
   // Open the file
-  FILE * fptr = fopen(filename, "r");
   // If the file cannot be found, return -1
-  if (!fptr) return -1;
 
   // Dynamically allocate a string of length max_word_length
-  char * word = malloc(sizeof(char)*max_word_length);
   // Read words to that string, using fscanf, and count the words
     // Hint:  fscanf(file_ptr, "%39s", my_string) will retrieve everything up to the next whitespace (up to 39 characters), add a null terminator, and place it in "my_string"
   // Close the file and free the string
   // Return the word count
 }
+#endif
 
+#ifdef EACHCOUNTWORD
 // Inputs:
   // char * filename      The name of the input file
   // int max_word_length  The longest any word is allowed to be
@@ -49,44 +49,22 @@ int totalWordCount(char * filename, int max_word_length) {
 void eachWordCount(char * filename, int max_word_length, int total_word_count)
 {
   // Open the file
-  FILE * fptr = fopen(filename, "r");
   // If fopen fails, return
-  if (!fptr) return;
 
   // Dynamically allocate space for your table of words, both words and ints to act as word counts
     // Hint:  you may want to use pointer arithmetic to navigate your table of words
     // Hint:  you may need a variable to track how many rows of your "table" are real data
 
   // Read in words from the file
-  char * word = malloc(sizeof(char)*max_word_length);
-  while (fscanf(fptr, "%40s", word) == 1) {
     // convert them to lowercase using the `tidyString`
-    tidyString(word);
     // if the word does not appear in the table, add it and give it a count of 1
-    dict_word = next_word - max_word_length;
-    while (dict_word >= words && strcmp(dict_word, word)) {
-      dict_word -= max_word_length;
-    }
-    if (dict_word < words) {
-      strcpy(next_word, word);
-      *next_word_count = 1;
-      next_word += max_word_length;
-      ++next_word_count;
-    }
     // if the word does appear in the table, increment its count
       // Hint:  you can use "strcmp" to compare if two strings are identical
 
   // Close the file
-  fclose(fptr);
   
   // Print out words and their counts
-  while (next_word > words) {
-    next_word -= max_word_length;
-    --next_word_count;
-    printf("%s %d\n", next_word, *next_word_count);
-  }
 
   // Free all dynamically allocated memory
-  free(words);
-  free(word_counts);
 }
+#endif
