@@ -13,10 +13,11 @@ void tidyString(char * messyString) {
   char * tidyString = malloc(sizeof(char)*(strlen(messyString) + 1));
   if (!tidyString) return;
   char * addToString = tidyString;
-  while (*messyString) {
-    if (*messyString > 96 && *messyString < 123) *(addToString++) = *messyString;
-    if (*messyString > 64 && *messyString < 91) *(addToString++) = *messyString + 32;
-    ++messyString;
+  char * takeFromString = messyString;
+  while (*takeFromString) {
+    if (*takeFromString > 96 && *takeFromString < 123) *(addToString++) = *takeFromString;
+    if (*takeFromString > 64 && *takeFromString < 91) *(addToString++) = *takeFromString + 32;
+    ++takeFromString;
   }
   *addToString = 0;
   strcpy(messyString, tidyString);
@@ -37,7 +38,7 @@ int totalWordCount(char * filename, int max_word_length) {
   char * word = malloc(sizeof(char)*max_word_length);
   // Read words to that string, using fscanf, and count the words
   int count = 0;
-  while (fscanf(fptr, "%40s", word)) {
+  while (fscanf(fptr, "%40s", word) == 1) {
     ++count;
   }
   
@@ -68,16 +69,16 @@ void eachWordCount(char * filename, int max_word_length, int total_word_count)
 
   // Read in words from the file
   char * word = malloc(sizeof(char)*max_word_length);
-  while (fscanf(fptr, "%40s", word)) {
+  while (fscanf(fptr, "%40s", word) == 1) {
     // convert them to lowercase using the `tidyString`
     tidyString(word);
     // if the word does not appear in the table, add it and give it a count of 1
     dict_word = next_word - max_word_length;
-    while (dict_word >= words && !strcmp(dict_word, word)) {
+    while (dict_word >= words && strcmp(dict_word, word)) {
       dict_word -= max_word_length;
     }
     if (dict_word < words) {
-      strcpy(word, next_word);
+      strcpy(next_word, word);
       *next_word_count = 1;
       next_word += max_word_length;
       ++next_word_count;
@@ -95,7 +96,7 @@ void eachWordCount(char * filename, int max_word_length, int total_word_count)
   while (next_word > words) {
     next_word -= max_word_length;
     --next_word_count;
-    printf("%s %d", next_word, *next_word_count);
+    printf("%s %d\n", next_word, *next_word_count);
   }
 
   // Free all dynamically allocated memory
