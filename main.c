@@ -12,7 +12,6 @@
 int main(int argc, char * * argv)
 {
   // argv[1] is the input file name
-  // argv[2] is the word to be counted
   if (argc != 2)
     {
       return EXIT_FAILURE;
